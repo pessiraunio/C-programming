@@ -8,6 +8,7 @@ Description:	Printing to screen
 
 int main () {
 	printf("Hello!\n");
+	printf("This is my very first C program, how nice :)");
 
 	return 0;
 }
