@@ -102,7 +102,7 @@ int main() {
 	
 	printf("\n **********Beginning of task 4**********\n");
 
-	//Printing out the random number
+	//Printing out the random number.
 	int randomNumber;
 	int lowerLimit = 1, upperLimit = 100;
 	//Getting seed for the random number using seconds passed since 1971
@@ -120,7 +120,7 @@ int main() {
 	
 	printf("\n ****************************************\n");
 	
-	//Checking if random number is devisible by 3 and 8
+	//Checking if random number is devisible by 3 and 8.
 	if (randomNumber % 3 ==0 && randomNumber % 8 == 0)
 		printf("Random number is devisible by 3 and 8\n");
 	else
