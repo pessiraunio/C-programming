@@ -10,6 +10,8 @@ Description:	Program for calculating stuff according to Exercise 3
 void sumOfNumbers();
 void sumOfEvenNumbers();
 void multiplyOfNumbers();
+void fibonacciSeries();
+void collatzSequence();
 
 int main() {
 	//Calling the function for calculating numbers 1-100.
@@ -21,7 +23,8 @@ int main() {
 	//Calling the function to do calculations with random numbers between 2-20.
 	multiplyOfNumbers();
 	
-	
+	//Calling the function to check if random number is in fibonacci.
+	fibonacciSeries();
 
 
 return 0;
@@ -105,3 +108,51 @@ void multiplyOfNumbers() {
 }
 
 
+/* 
+
+Pseudocode
+
+generate random number
+
+Calculate fibonacci code until the number is reached.
+
+IF number is  not met the number doestn belong to fibonacci series
+*/
+
+
+void fibonacciSeries() {
+
+
+	//Printing out the random number.
+	int randomNumber = 0;
+	int lowerLimit = 0, upperLimit = 100000;
+	//Getting seed for the random number using seconds passed since 1971
+	srand(time(NULL));
+	randomNumber = (rand() % (lowerLimit-upperLimit+1)) + lowerLimit;
+	printf("\nRandom number is %d\n",randomNumber);
+
+	
+	int firstTerm = 0, secondTerm = 1, nextTerm = 0;
+
+    nextTerm = firstTerm + secondTerm;
+
+    while (nextTerm <= randomNumber) {
+        firstTerm = secondTerm;
+        secondTerm = nextTerm;
+        nextTerm = firstTerm + secondTerm;
+    }
+
+	if (randomNumber == firstTerm || randomNumber == secondTerm) {
+			printf("Random number %d is found in fibonacci series.\n", randomNumber);
+		}
+		else {
+			printf("Random number %d is not found in fibonacci series.\n", randomNumber);
+		}
+
+}
+
+void collatzSequence() {
+
+
+
+}
