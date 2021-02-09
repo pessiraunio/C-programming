@@ -12,6 +12,9 @@ int integerSorter();
 int sumOfInputs();
 int sumOfDevisibleNumbers();
 int randomIntRange(int *startNumber, int *stopNumber);
+int randomIntRangeExam(int *startNumber, int *stopNumber);
+int randomIntRangeTasks(int *startNumber, int *stopNumber);
+int gradingFunction(int *examPoints, int *taskPoints);
 
 #include <stdio.h>
 #include <ctype.h>
@@ -22,6 +25,9 @@ int main() {
 
     int startNumber = 0;
     int stopNumber = 0;
+
+    int examPoints = 0;
+    int taskPoints = 0;
     
     //Calling function
     integerSorter();
@@ -49,6 +55,31 @@ int main() {
     //Calling the randomnumber function with user given parameters.
     randomIntRange(&startNumber, &stopNumber);
     
+    printf("\n * * * * * * * * *\n");
+
+    //Prompting user for the upper and lower limit for determing the exam points.
+    printf("Enter start where to calculate your exam grade: ");
+    scanf("%d", &startNumber);
+    printf("And the end: ");
+    scanf("%d", &stopNumber);
+    
+    //Calling the randomnumber function with user given parameters.
+    examPoints = randomIntRangeExam(&startNumber, &stopNumber);
+    printf("Your exam points: %d\n", examPoints);
+
+    //Prompting user for the upper and lower limit for determing the task points.
+    printf("Enter start where to calculate your task grade: ");
+    scanf("%d", &startNumber);
+    printf("And the end: ");
+    scanf("%d", &stopNumber);
+    
+    //Calling the randomnumber function with user given parameters.
+    taskPoints = randomIntRangeTasks(&startNumber, &stopNumber);
+    printf("Your task points: %d\n", taskPoints);
+
+    gradingFunction(&examPoints, &taskPoints);
+
+
 
     return 0;
 }
@@ -173,4 +204,98 @@ int randomIntRange(int *startNumber, int *stopNumber) {
     
     //Returning the generated number
     return printf("\nRandom number is %d\n",randomNumber);;
+}
+
+int randomIntRangeExam(int *startNumber, int *stopNumber) {
+
+    //Printing out the random number.
+	int randomNumber = 0;
+
+    //Setting limits as the function parameters
+	int lowerLimit = *startNumber;
+    int upperLimit = *stopNumber;
+
+    //Setting up the for loop to use break and continue statements
+    for (int number = 1; number >=0; number--) {
+
+        //If there is no range randomnumber will be 0 and user will be prompted.
+        if (lowerLimit == upperLimit || lowerLimit > upperLimit) {
+            printf("Invalid range for random number.");
+            break;
+        }
+        else {
+            //Getting seed for the random number using seconds passed since 1971
+	        srand(time(NULL));
+	        randomNumber = (rand() % (lowerLimit-upperLimit+1)) + lowerLimit;
+            continue;
+            }
+        }
+    
+    //Returning the generated number
+    return randomNumber;
+}
+
+int randomIntRangeTasks(int *startNumber, int *stopNumber) {
+
+    //Printing out the random number.
+	int randomNumber = 0;
+
+    //Setting limits as the function parameters
+	int lowerLimit = *startNumber;
+    int upperLimit = *stopNumber;
+
+    //Setting up the for loop to use break and continue statements
+    for (int number = 1; number >=0; number--) {
+
+        //If there is no range randomnumber will be 0 and user will be prompted.
+        if (lowerLimit == upperLimit || lowerLimit > upperLimit) {
+            printf("Invalid range for random number.");
+            break;
+        }
+        else {
+            //Getting seed for the random number using seconds passed since 1971
+	        srand(time(NULL));
+	        randomNumber = (rand() % (lowerLimit-upperLimit+1)) + lowerLimit;
+            continue;
+            }
+        }
+    
+    //Returning the generated number
+    return randomNumber;
+}
+
+int gradingFunction(int *examPoints, int *taskPoints) {
+
+    //Variable for sum of points
+    int sumOfPoints = *examPoints + *taskPoints;
+
+    //Checking if exam or task points are too low to pass
+    if (*examPoints < 50) {
+        printf("Your exam points are too low, sorry no pass\n");
+    }
+    if (*taskPoints < 50) {
+        printf("Your task points are too low, sorry no pass\n");
+    }
+    //Checking what grade the sum of exam and task points will get you.
+    if (sumOfPoints < 100) {
+        printf("Your score is %d, grade will be 0.\n", sumOfPoints);
+    }
+    else if (sumOfPoints < 120) {
+        printf("Your score is %d, grade will be 1.\n", sumOfPoints);
+    }
+    else if (sumOfPoints < 140) {
+        printf("Your score is %d grade will be 2.\n", sumOfPoints);
+    }
+    else if (sumOfPoints < 160) {
+        printf("Your score is %d, grade will be 3.\n", sumOfPoints);
+    }
+    else if (sumOfPoints < 180) {
+        printf("Your score is %d, grade will be 4.\n", sumOfPoints);
+    }
+    else if (sumOfPoints >= 180) {
+        printf("Your score is %d, grade will be 5.\n", sumOfPoints);
+    }
+
+
+    return sumOfPoints;
 }
