@@ -11,14 +11,17 @@ Filename:       Exercise4.c'
 int integerSorter();
 int sumOfInputs();
 int sumOfDevisibleNumbers();
-//int randomIntRange(int startNumber, int stopNumber);
+int randomIntRange(int *startNumber, int *stopNumber);
 
 #include <stdio.h>
 #include <ctype.h>
-
+#include <time.h>
 #include <stdlib.h>
 
 int main() {
+
+    int startNumber = 0;
+    int stopNumber = 0;
     
     //Calling function
     integerSorter();
@@ -33,6 +36,18 @@ int main() {
     printf("\n * * * * * * * * *\n");
 
     sumOfDevisibleNumbers();
+
+    //Printing this to tidy up the output
+    printf("\n * * * * * * * * *\n");
+
+    //Prompting user for the upper and lower limit of the random number.
+    printf("Enter start for the random number: ");
+    scanf("%d", &startNumber);
+    printf("And the end: ");
+    scanf("%d", &stopNumber);
+    
+    //Calling the randomnumber function with user given parameters.
+    randomIntRange(&startNumber, &stopNumber);
     
 
     return 0;
@@ -128,4 +143,34 @@ int sumOfDevisibleNumbers() {
     }
     //Printing the sum.
     return printf("Sum of numbers entered which are devisible by three: %d\n", inputSumCounter/2);
+}
+
+
+int randomIntRange(int *startNumber, int *stopNumber) {
+
+    //Printing out the random number.
+	int randomNumber = 0;
+
+    //Setting limits as the function parameters
+	int lowerLimit = *startNumber;
+    int upperLimit = *stopNumber;
+
+    //Setting up the for loop to use break and continue statements
+    for (int number = 1; number >=0; number--) {
+
+        //If there is no range randomnumber will be 0 and user will be prompted.
+        if (lowerLimit == upperLimit || lowerLimit > upperLimit) {
+            printf("Invalid range for random number.");
+            break;
+        }
+        else {
+            //Getting seed for the random number using seconds passed since 1971
+	        srand(time(NULL));
+	        randomNumber = (rand() % (lowerLimit-upperLimit+1)) + lowerLimit;
+            continue;
+            }
+        }
+    
+    //Returning the generated number
+    return printf("\nRandom number is %d\n",randomNumber);;
 }
