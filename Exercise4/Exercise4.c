@@ -11,10 +11,14 @@ Filename:       Exercise4.c'
 int integerSorter();
 int sumOfInputs();
 int sumOfDevisibleNumbers();
+
 int randomIntRange(int *startNumber, int *stopNumber);
 int randomIntRangeExam(int *startNumber, int *stopNumber);
 int randomIntRangeTasks(int *startNumber, int *stopNumber);
 int gradingFunction(int *examPoints, int *taskPoints);
+
+int rockPaperScissors();
+int rpsOpponent();
 
 #include <stdio.h>
 #include <ctype.h>
@@ -28,6 +32,7 @@ int main() {
 
     int examPoints = 0;
     int taskPoints = 0;
+
     
     //Calling function
     integerSorter();
@@ -78,6 +83,9 @@ int main() {
     printf("Your task points: %d\n", taskPoints);
 
     gradingFunction(&examPoints, &taskPoints);
+
+    rockPaperScissors();
+    rpsOpponent();
 
 
 
@@ -298,4 +306,180 @@ int gradingFunction(int *examPoints, int *taskPoints) {
 
 
     return sumOfPoints;
+}
+
+
+/*
+---- Pseudo code ----
+
+//First create function to house eveerything
+
+def mainfunction()
+
+
+return 0
+
+//Create function to play, as in choose rock, paper or scissors
+def play function()
+    ask user for input, determine input with 1, 2 and 3
+    1, scissors
+    2, paper
+    3, rock
+    call computerfunction
+    Compare computerfunction to user input and determine if it was a win or lose
+
+//Then create functuon which will be the computer
+
+def computerFUnction()
+    Create random number between 1 and 3.
+
+    
+    */
+
+
+
+
+int rockPaperScissors() {
+
+    
+    //Declaring variables for user input and Opponents choice
+    int userInput = 0;
+    int aiChoice = 0;
+
+    //Printing out the rules of the game
+    printf("\n--- Welcome to rock-paper-scissors game ---\n");
+    printf("Rules:\nInput 1 is Scissors\nInput 2 is Paper\nInput 3 is Rock\n");
+    printf("Scissors and your opponent has rock, you lose and vice versa\n");
+    printf("If choose Paper and your opponent has Scissors, you lose and vice versa\n");
+    printf("If choose Rock and your opponent has Paper, you lose and vice versa\n");
+    
+    printf("\n");
+
+    //Calling function to generate opponents choice
+    aiChoice = rpsOpponent();
+
+    //Reading user input
+    while (userInput <= 3) {
+        printf("Choose your weapon: ");
+        scanf("%d", &userInput);
+
+        //Multiple if /else if statements to check if player won or lost
+        if (aiChoice == userInput) {
+            printf("Game is tie\n");
+
+            //This is repeated to show what the opponents choice was.
+            if (aiChoice == 1){
+                printf("Opponent had scissors\n");
+            }
+            else if (aiChoice == 2){
+                printf("Opponent had paper\n");
+            }
+            else if (aiChoice == 3){
+                printf("Opponent had rock\n");
+            }
+            break;
+        }
+        else if (aiChoice == 1 && userInput == 3) {
+            printf("You chose rock and won\n");
+            if (aiChoice == 1){
+                printf("Opponent had scissors\n");
+            }
+            else if (aiChoice == 2){
+                printf("Opponent had paper\n");
+            }
+            else if (aiChoice == 3){
+                printf("Opponent had rock\n");
+            }
+            break;
+        }
+        else if (aiChoice == 2 && userInput == 1) {
+            printf("You chose scissors and won\n");
+            if (aiChoice == 1){
+                printf("Opponent had scissors\n");
+            }
+            else if (aiChoice == 2){
+                printf("Opponent had paper\n");
+            }
+            else if (aiChoice == 3){
+                printf("Opponent had rock\n");
+            }
+            break;
+        }
+        else if (aiChoice == 3 && userInput == 2) {
+            printf("You chose paper and won\n");
+            if (aiChoice == 1){
+                printf("Opponent had scissors\n");
+            }
+            else if (aiChoice == 2){
+                printf("Opponent had paper\n");
+            }
+            else if (aiChoice == 3){
+                printf("Opponent had rock\n");
+            }
+            break;
+        }
+        else if (aiChoice == 1 && userInput == 2) {
+            printf("You chose paper and lost\n");
+            if (aiChoice == 1){
+                printf("Opponent had scissors\n");
+            }
+            else if (aiChoice == 2){
+                printf("Opponent had paper\n");
+            }
+            else if (aiChoice == 3){
+                printf("Opponent had rock\n");
+            }
+            break;
+        }
+        else if (aiChoice == 2 && userInput == 3) {
+            printf("You chose rock and lost\n");
+            if (aiChoice == 1){
+                printf("Opponent had scissors\n");
+            }
+            else if (aiChoice == 2){
+                printf("Opponent had paper\n");
+            }
+            else if (aiChoice == 3){
+                printf("Opponent had rock\n");
+            }
+            break;
+        }
+        else if (aiChoice == 3 && userInput == 1) {
+            printf("You chose scissors and lost\n");
+            if (aiChoice == 1){
+                printf("Opponent had scissors\n");
+            }
+            else if (aiChoice == 2){
+                printf("Opponent had paper\n");
+            }
+            else if (aiChoice == 3){
+                printf("Opponent had rock\n");
+            }
+            break;
+        }
+
+    }
+
+    return aiChoice;
+}
+
+int rpsOpponent() {
+
+    //Printing out the random number.
+	int randomNumber = 0;
+    //Upper limit is 4 and later 4 will be reduced to 3, for some reason range from 1 to 3 only gave 1.
+	int lowerLimit = 1, upperLimit = 4;
+	//Getting seed for the random number using seconds passed since 1971
+	srand(time(NULL));
+	randomNumber = (rand() % (lowerLimit-upperLimit+1)) + lowerLimit;
+
+    //If random number is greater than 3 it will be reduced to 3 (So there is a greater chance to get 3 than 1 or 2)
+    if (randomNumber > 3) {
+        do {
+            --randomNumber;
+        }
+        while (randomNumber > 3);
+    }
+
+    return randomNumber;
 }
