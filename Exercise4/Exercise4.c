@@ -312,32 +312,22 @@ int gradingFunction(int *examPoints, int *taskPoints) {
 /*
 ---- Pseudo code ----
 
-//First create function to house eveerything
 
-def mainfunction()
-
-
-return 0
-
-//Create function to play, as in choose rock, paper or scissors
-def play function()
+//Create function to call the game
     ask user for input, determine input with 1, 2 and 3
     1, scissors
     2, paper
     3, rock
-    call computerfunction
+    call computerfunction for opponents choixe.
+
     Compare computerfunction to user input and determine if it was a win or lose
 
-//Then create functuon which will be the computer
-
+//Here creating the function to get opponents choice
 def computerFUnction()
     Create random number between 1 and 3.
 
     
-    */
-
-
-
+*/
 
 int rockPaperScissors() {
 

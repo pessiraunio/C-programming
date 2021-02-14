@@ -1,4 +1,5 @@
 /*
+FIle:			Exercise3.c
 Author:			Pessi Raunio
 Description:	Program for calculating stuff according to Exercise 3
 */
@@ -25,6 +26,11 @@ int main() {
 	
 	//Calling the function to check if random number is in fibonacci.
 	fibonacciSeries();
+
+	//Calling the function to calculate the collat sequence.
+	collatzSequence();
+
+
 
 
 return 0;
@@ -125,7 +131,7 @@ void fibonacciSeries() {
 
 	//Printing out the random number.
 	int randomNumber = 0;
-	int lowerLimit = 0, upperLimit = 100000;
+	int lowerLimit = 0, upperLimit = 23;
 	//Getting seed for the random number using seconds passed since 1971
 	srand(time(NULL));
 	randomNumber = (rand() % (lowerLimit-upperLimit+1)) + lowerLimit;
@@ -151,8 +157,42 @@ void fibonacciSeries() {
 
 }
 
+/* 
+Pseudo code for task 5
+
+Generate random number
+
+make an array
+
+Check if number is odd or even.
+
+IF odd triple it and add one, then add to the array
+
+if even divide by two and add to the array
+
+print the array once the last number is 0.
+*/
+
+
 void collatzSequence() {
+	
+	//Printing out the random number.
+	int randomNumber = 0;
+	int lowerLimit = 0, upperLimit = 100000;
+	//Getting seed for the random number using seconds passed since 1971
+	srand(time(NULL));
+	randomNumber = (rand() % (lowerLimit-upperLimit+1)) + lowerLimit;
+	printf("\nRandom number is %d\n",randomNumber);
 
+	int i;
 
+	//Creating an array for maximum of 100 elements.
+	for (i = 10; i > 1; --i) {
+		printf("%d",i);
+		printf("-");
+
+	
+printf("\n");
+	}
 
 }
