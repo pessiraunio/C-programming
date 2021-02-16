@@ -1,9 +1,7 @@
 /*
-
 Author:         Pessi Raunio
 Description:    Exercises done in exercise 4
 Filename:       Exercise4.c'
-
 */
 
 

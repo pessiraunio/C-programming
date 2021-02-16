@@ -4,6 +4,7 @@ Author:			Pessi Raunio
 Description:	Program for calculating stuff according to Exercise 3
 */
 
+
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>

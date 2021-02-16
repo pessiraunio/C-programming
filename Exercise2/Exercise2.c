@@ -1,6 +1,6 @@
 /*
 
-author: 	Pessi Raunio
+author: 		Pessi Raunio
 description: 	Script for doing basic calculations with user inputs
 
 */
