@@ -10,6 +10,8 @@ FIlename:       Exercise5.c
 
 //Declaring functions
 int isPrimeNumber(int *numberToCheck);
+void arrayFunction(int array[7], int size);
+
 void exit(int status);
 
 //Main function with parameters argc and argv
@@ -50,9 +52,15 @@ int main(int argc, char *argv[]) {
     //Printing out the argument for the user to see.
     printf("\nCommand line argument entered: %s\n", argv[1]);
 
-    printf("\n------------------------------------\n");
+    printf("------------------------------------\n");
 
     isPrimeNumber(&testInteger);
+
+    printf("------------------------------------\n");
+
+    int arrayOfNumbers[7] = {2,4,1,5,13,123,2};
+
+    arrayFunction(arrayOfNumbers, 7);
 
     return 0;
 }
@@ -96,3 +104,13 @@ int isPrimeNumber(int *numberToCheck) {
 }
 
 
+void arrayFunction(int arrayOfNumbers[7], int size) {
+
+    //Using for loop to iterate through the elements and print them out
+    printf("Elements of the array: ");
+    for (int i=0; i<size; ++i) {
+        printf("%d ", arrayOfNumbers[i]);
+    }
+    printf("\n");
+
+}
