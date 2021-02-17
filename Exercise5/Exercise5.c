@@ -7,10 +7,13 @@ FIlename:       Exercise5.c
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 //Declaring functions
 int isPrimeNumber(int *numberToCheck);
-void arrayFunction(int array[7], int size);
+void arrayFunction(int numberArray[10], int size);
+int *randomArrayFunction(int numberArray[10], int size);
+int *arraySortingFunction(int numberArray[10], int size);
 
 void exit(int status);
 
@@ -59,8 +62,22 @@ int main(int argc, char *argv[]) {
     printf("------------------------------------\n");
 
     int arrayOfNumbers[7] = {2,4,1,5,13,123,2};
+    int emptyArray[10] = {};
+    int *randomArrayPointer = NULL;
+    int *sortedArrayPointer = NULL;
+
+    
 
     arrayFunction(arrayOfNumbers, 7);
+    
+    randomArrayPointer = randomArrayFunction(emptyArray, 10);
+    arrayFunction(randomArrayPointer, 10);
+
+    sortedArrayPointer = arraySortingFunction(emptyArray, 10);
+    arrayFunction(sortedArrayPointer, 10);
+
+
+    arraySortingFunction(randomArrayPointer, 10);
 
     return 0;
 }
@@ -104,7 +121,7 @@ int isPrimeNumber(int *numberToCheck) {
 }
 
 
-void arrayFunction(int arrayOfNumbers[7], int size) {
+void arrayFunction(int arrayOfNumbers[10], int size) {
 
     //Using for loop to iterate through the elements and print them out
     printf("Elements of the array: ");
@@ -112,5 +129,48 @@ void arrayFunction(int arrayOfNumbers[7], int size) {
         printf("%d ", arrayOfNumbers[i]);
     }
     printf("\n");
+
+}
+
+
+
+int *randomArrayFunction(int emptyArray[10], int size) {
+
+    int randomInteger = 0;
+    int lowerLimit = 1;
+    int upperLimit = 10000;
+
+    for (int i=0; i<size; ++i) {
+	    //Getting seed for the random number using seconds passed since 1971
+	    srand(time(NULL));
+	    randomInteger = (rand() % (upperLimit-lowerLimit -1)) + (upperLimit + i);
+	    emptyArray[i] = randomInteger;
+    }
+
+    //Printing out the elements using arrayFunction.
+    printf("Random ");
+    return emptyArray;
+
+}
+
+
+int *arraySortingFunction(int numberArray[10], int size) {
+
+    int tempNumber = 0;
+
+    for (int i=0; i < size; ++i) {
+
+        for (int j=i+1; j < size; ++j) {
+
+            if (numberArray[i] < numberArray[j]) {
+
+                tempNumber = numberArray[i];
+                numberArray[i] = numberArray[j];
+                numberArray[j] = tempNumber;
+            }
+        }
+    }
+    printf("Sorted ");
+    return numberArray;
 
 }
