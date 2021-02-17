@@ -16,6 +16,14 @@ int *randomArrayFunction(int numberArray[10], int size);
 int *arraySortingFunction(int numberArray[10], int size);
 
 void exit(int status);
+void delay(int seconds);
+
+//Delay funtion to be used in generating a random number
+void delay(int seconds) {
+    int milSecond = 1000*seconds;
+    clock_t startTime = clock();
+    while(clock()<startTime+milSecond);
+}
 
 //Main function with parameters argc and argv
 int main(int argc, char *argv[]) {
@@ -63,21 +71,27 @@ int main(int argc, char *argv[]) {
 
     int arrayOfNumbers[7] = {2,4,1,5,13,123,2};
     int emptyArray[10] = {};
+    //Creating a pointer for random array.
     int *randomArrayPointer = NULL;
+    //Creating a pointer for sorted array.
     int *sortedArrayPointer = NULL;
 
     
-
+    //Calling funtion to print out an array
     arrayFunction(arrayOfNumbers, 7);
-    
+    printf("\n");
+    printf("Generating numbers..\n");
+    //Setting random arraypointer to randomarrayfunction
     randomArrayPointer = randomArrayFunction(emptyArray, 10);
+    
+    //Using arrayfunction to print out what randomarrayfunction returns
     arrayFunction(randomArrayPointer, 10);
+    printf("\n");
 
+    //Setting sorted arraypointer to sortingarrayfunction
     sortedArrayPointer = arraySortingFunction(emptyArray, 10);
+    //Using previously created function to print out the sorted array.
     arrayFunction(sortedArrayPointer, 10);
-
-
-    arraySortingFunction(randomArrayPointer, 10);
 
     return 0;
 }
@@ -143,11 +157,15 @@ int *randomArrayFunction(int emptyArray[10], int size) {
     for (int i=0; i<size; ++i) {
 	    //Getting seed for the random number using seconds passed since 1971
 	    srand(time(NULL));
-	    randomInteger = (rand() % (upperLimit-lowerLimit -1)) + (upperLimit + i);
+	    randomInteger = (rand() % (upperLimit-lowerLimit - 1)) + (upperLimit + i);
 	    emptyArray[i] = randomInteger;
+        //This function uses time passed as a seed to generate the numbers.
+        //Hence delay is used here to change the generating seed between numbers.
+        //Otherwise numbers would differ only by one.
+        delay(800);
     }
 
-    //Printing out the elements using arrayFunction.
+    //Returning generated numbers as emptyArray
     printf("Random ");
     return emptyArray;
 
@@ -156,20 +174,23 @@ int *randomArrayFunction(int emptyArray[10], int size) {
 
 int *arraySortingFunction(int numberArray[10], int size) {
 
+    //Temporary number used to iterate array.
     int tempNumber = 0;
 
+    //Two for loops for checking if number i is smaller than the next number j.
     for (int i=0; i < size; ++i) {
 
         for (int j=i+1; j < size; ++j) {
 
             if (numberArray[i] < numberArray[j]) {
-
+                //If number i is smaller temporary number will be used to swap places with number i and j.
                 tempNumber = numberArray[i];
                 numberArray[i] = numberArray[j];
                 numberArray[j] = tempNumber;
             }
         }
     }
+    //Returnin the sorted array as numberArray.
     printf("Sorted ");
     return numberArray;
 
