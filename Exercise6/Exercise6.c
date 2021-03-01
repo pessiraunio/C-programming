@@ -72,7 +72,8 @@ int fillArray(int *emptyArray, int arraySize) {
 	    srand(time(NULL));
 	    randomNumber = (rand() % (lowerLimit-upperLimit+1)) + lowerLimit;
         //Delay added for variety on numbers generated.
-        delay(650);
+        delay(800);
+        
         emptyArray[i]=randomNumber;
 
     }
