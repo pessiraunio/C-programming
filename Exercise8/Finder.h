@@ -7,6 +7,6 @@ Description:    Header file for FInder.c
 #ifndef FINDER_H
 #define FINDER_H
 
-void printFromFinder();
+int* findUserInput(int *pointerToArray, int arraySize, int numberToFind);
 
 #endif

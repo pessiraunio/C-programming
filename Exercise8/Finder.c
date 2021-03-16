@@ -7,7 +7,16 @@ Description:    Code file for Finder.c
 #include <stdio.h>
 #include "Finder.h"
 
+int* findUserInput(int *pointerToArray, int arraySize, int numberToFind) {
 
-void printFromFinder() {
-    printf("Hello I am from Finder.c\n");
+    for (int i=0; i<arraySize; i++) {
+        if (*pointerToArray == numberToFind) {
+            return pointerToArray;
+        }
+        else {
+            pointerToArray++;
+        }
+        pointerToArray++;
+    }
+    return NULL;
 }

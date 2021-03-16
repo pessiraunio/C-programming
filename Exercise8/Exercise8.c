@@ -9,29 +9,43 @@ Description:    Code file for Exercise8.c
 #include "Array.h"
 #include <stddef.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 
 
 int main() {
 
+    int userInput = 0;
+
     generateArray();
 
     //Creating pointer for generated array
-    int *pointer = NULL;
+    int *pointerToArray = NULL;
+    int *pointerToNumber = NULL;
     //Setting pointer to point on function.
-    pointer = generateArray();
+    pointerToArray = generateArray();
 
     //Printing out array by passing its pointer to a function.
-    printOutArray(pointer, 10);
+    printOutArray(pointerToArray, 10);
     //Freeing the memory after elements are printed.
     /* NOT SURE IF THIS CLEARS memorypointer from generatearray function or just pointer
         BUT SHOULDNT THEY BE THE SAME AFTER I DECLARE POINTER TO generatearrray which RETURNS POINTER. */
-    free(pointer);
 
-    printFromCalculation();
+    printf("Enter a number to find: ");
+    scanf("%d", &userInput);
+    printf("\n");
 
-    printFromFinder();
+    pointerToNumber = findUserInput(pointerToArray, 10, userInput);
 
+    if (pointerToNumber != NULL) {
+        printf("Number found!\n");
+        printf("Here is the pointer %p and its value %d.\n", pointerToNumber, *pointerToNumber);
+    }
+    else {
+        free(pointerToNumber);
+        printf("Number was not found from the array.\n");
+    }
+    free(pointerToArray);
 
     return 0;
 }

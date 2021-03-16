@@ -17,7 +17,7 @@ void delay(int seconds) {
 }
 
 
-int *generateArray() {
+int* generateArray() {
 
     int lowerLimit = 1;
     int upperLimit = 100;
@@ -49,8 +49,12 @@ int *generateArray() {
 
 void printOutArray(int someArray[10], int arraySize) {
 
+    printf("Here is the array: ");
+
     for (int i=0; i<arraySize; i++) {
-        printf("%d - %d\n", i, someArray[i]);
+        printf("%d ",someArray[i]);
     }
+
+    printf("\n");
 
 }
