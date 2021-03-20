@@ -12,6 +12,8 @@ void delay(int seconds);
 
 //using asterisk declaring function to return int type.
 int* generateArray();
+
 void printOutArray(int someArray[10], int arraySize);
 
+int* readIntFromFile(); 
 #endif

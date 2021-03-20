@@ -27,9 +27,6 @@ int main() {
 
     //Printing out array by passing its pointer to a function.
     printOutArray(pointerToArray, 10);
-    //Freeing the memory after elements are printed.
-    /* NOT SURE IF THIS CLEARS memorypointer from generatearray function or just pointer
-        BUT SHOULDNT THEY BE THE SAME AFTER I DECLARE POINTER TO generatearrray which RETURNS POINTER. */
 
     printf("Enter a number to find: ");
     scanf("%d", &userInput);
@@ -37,6 +34,7 @@ int main() {
 
     pointerToNumber = findUserInput(pointerToArray, 10, userInput);
 
+    //Checking if number was not found, =(function returned NULL)
     if (pointerToNumber != NULL) {
         printf("Number found!\n");
         printf("Here is the pointer %p and its value %d.\n", pointerToNumber, *pointerToNumber);
@@ -45,7 +43,13 @@ int main() {
         free(pointerToNumber);
         printf("Number was not found from the array.\n");
     }
+    //Freeing the allocated memory.
     free(pointerToArray);
+
+    pointerToArray = readIntFromFile();
+
+    printf("\n-- File contents printed in an array --\n\n");
+    printOutArray(pointerToArray, 50);
 
     return 0;
 }
