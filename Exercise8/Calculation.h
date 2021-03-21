@@ -7,6 +7,6 @@ Description:    Header file for Calculation.c
 #ifndef CALCULATION_H
 #define CALCULATION_H
 
-void printFromCalculation();
+int calculateSum(int numberArray[10], int arraySize);
 
 #endif

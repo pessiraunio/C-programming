@@ -51,8 +51,10 @@ int main() {
     //Verifying file was correct size and making an array was successfull.
     if (pointerToArray != NULL) {
         printf("\n-- File contents printed in an array --\n\n");
-        printOutArray(pointerToArray, 50);
+        printOutArray(pointerToArray, 9);
     }
+
+    calculateSum(pointerToArray, 9);
 
     return 0;
 }

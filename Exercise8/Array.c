@@ -47,12 +47,14 @@ int* generateArray() {
 }
 
 
-void printOutArray(int someArray[10], int arraySize) {
+void printOutArray(int numberArray[10], int arraySize) {
 
     printf("Here is the array: ");
 
+    
+
     for (int i=0; i<arraySize; i++) {
-        printf("%d ",someArray[i]);
+        printf("%d ",numberArray[i]);
     }
 
     printf("\n");
@@ -79,7 +81,7 @@ int* readIntFromFile() {
     char sizeBuffer[80] = "";
 
 
-    filePointer = fopen("Numbers.txt", "r");
+    filePointer = fopen("Test.txt", "r");
 
     //Getting the number of items in file.
     while ((fscanf(filePointer, "%s", sizeBuffer)) !=EOF) {
@@ -100,7 +102,7 @@ int* readIntFromFile() {
             }
 
         else {
-            filePointer = fopen("Numbers.txt", "r");
+            filePointer = fopen("Test.txt", "r");
             while ((fscanf(filePointer, "%s", readBuffer)) !=EOF) {
                 charToInt = atoi(readBuffer);
                 *(memoryPointer + fileElement) = charToInt;
